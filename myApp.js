@@ -11,15 +11,13 @@ app.get("/", (req, res) => {
 app.use("/public", express.static(__dirname + "/public"));
 //use the files inside the directory, statically
 
-app.get("/json", (req, res) => {
-  if(process.env.MESSAGE_STYLE == "uppercase"){
-    res.json({message:"Hello json".toUpperCase()});
-  }else{
-    res.json({message:"Hello json"});
-  }
+app.get("/json", (req, res, next) => {
+  console.log(req.method + " " + req.path + " - " + req.ip);
+  next();
+  //lesson 7/12
+  //request middleware function lesson
+  //logs the http verb, the path and the requester's ip then calls the next function to free the stack
 })
-//creates /json route, and if MESSA_STYLE equals uppercase, it return HELLO JSON, if not returns Hello json
-
 
 
 
