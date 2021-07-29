@@ -19,6 +19,16 @@ app.get("/json", (req, res, next) => {
   //logs the http verb, the path and the requester's ip then calls the next function to free the stack
 })
 
+app.get('/now', (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+}, (req, res) => {
+  res.send({time : req.time});
+  //Struggled a bit with the response handler
+  //^^^^
+  //In the handler, respond with a JSON object, taking the structure {time: req.time}.
+});
+
 
 
 
