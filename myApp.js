@@ -29,6 +29,12 @@ app.get('/now', (req, res, next) => {
   //In the handler, respond with a JSON object, taking the structure {time: req.time}.
 });
 
+app.get('/:word/echo', (req, res, next) =>{
+  res.send({echo : req.params.word});
+  next();
+})
+//it gets the parameters and send a json with the resquester's echo value, and then free the stack
+
 
 
 
