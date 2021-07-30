@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 const mySecret = process.env['MESSAGE_STYLE']
 
@@ -54,6 +55,12 @@ app.get('/name', (req, res, next) => {
   res.json({name: `${req.query.first} ${req.query.last}`})
 })
 
+//lesson 11/12
+app.use(bodyParser.urlencoded({extended: false})
+)
+//installed and require body-parser
+  //This package allows you to use a series of middleware, which can decode data in different formats.
+//hen using extended=false, values can be only strings or arrays.
 
 
 
