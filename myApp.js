@@ -50,9 +50,10 @@ app.get('/:word/echo', (req, res, next) =>{
 
 //2nd approach after seeing the solution
 
-app.get('/name', (req, res, next) => {
-  next();
-  res.json({name: `${req.query.first} ${req.query.last}`})
+app.get('/name', (req, res) => {
+  var firstName = req.query.first;
+  var lastName = req.query.last;
+  res.json({name: `${firstName} ${lastName}`});
 })
 
 //lesson 11/12
@@ -61,6 +62,15 @@ app.use(bodyParser.urlencoded({extended: false})
 //installed and require body-parser
   //This package allows you to use a series of middleware, which can decode data in different formats.
 //hen using extended=false, values can be only strings or arrays.
+
+//lesson 12/12
+app.post('/name', (req, res)=>{
+  var firstName = req.body.first;
+  var lastName = req.body.last;
+  res.json({name: `${firstName} ${lastName}`});
+})
+//When request data from html body, we gotta use bodyparser and use req.body params
+
 
 
 
